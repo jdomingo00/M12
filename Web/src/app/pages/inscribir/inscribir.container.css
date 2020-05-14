@@ -1,0 +1,13 @@
+input {
+    padding: 0;
+}
+
+.form-control {
+    padding-left: 10px;
+    background-color: rgba(195, 195, 195, 0.171);
+    border: 1px solid rgb(168, 168, 168);
+}
+
+.form-control:focus {
+    outline:0;box-shadow:0 0 0 .2rem rgba(92, 92, 92, 0.25)
+}

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-card>
+    <ion-img src="../../assets/img/img.jpg"></ion-img>
+  </ion-card>
+  <ion-card>
+    <form onsubmit="processForm(event)">
+      <ion-card>
+        <ion-item>
+          <ion-label position="stacked">Nombre <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text" oninput="handleFirstNameValue(event)"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="stacked">Apellidos <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text" oninput="handleLastNameValue(event)"></ion-input>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-label position="stacked">Telefono <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Correo <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="email"></ion-input>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-label position="stacked">Nivel <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required type="text"></ion-input>
+        </ion-item>
+      </ion-card>
+  
+      <div class="ion-padding">
+        <ion-button expand="block" type="submit" class="ion-no-margin">Editar perfil</ion-button>
+      </div>
+    </form>
+  </ion-card>
+</ion-content>
