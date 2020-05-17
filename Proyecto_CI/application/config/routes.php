@@ -51,5 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'welcome';
 $route['prueba'] = 'WS_PruebaController/getPrueba';
+$route['getUsers'] = 'WS_UsersController/getUsers';
+$route['login'] = 'WS_UsersController/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
