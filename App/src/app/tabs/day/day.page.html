@@ -6,6 +6,17 @@
 
 <ion-content>
   <ion-card>
-    
+    <ion-item lines="full">
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label> {{ classe.data }}</ion-label>
+    </ion-item>
+  
+    <ion-card-content>
+      {{ classe.desc }}
+    </ion-card-content>
+    <ion-item lines="none">
+      <ion-button fill="outline" slot="start">Asistire</ion-button>
+      <ion-button fill="outline" slot="end">No asistire</ion-button>
+    </ion-item>
   </ion-card>
 </ion-content>

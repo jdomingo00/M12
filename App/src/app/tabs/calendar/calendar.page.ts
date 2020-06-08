@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import listPlugin from '@fullcalendar/list';
+import esLocale from '@fullcalendar/core/locales/es';
 
 @Component({
   selector: 'app-calendar',
@@ -12,18 +10,19 @@ import listPlugin from '@fullcalendar/list';
 })
 export class CalendarPage implements OnInit {
 
+  calendarPlugins = [dayGridPlugin];
+  events = [
+    { title: 'event', date: '2020-06-05', color: 'purple' },
+    { title: 'event', date: '2020-06-02', color: 'green' },
+    { title: 'event', date: '2020-06-01', color: 'red' },
+    { title: 'event', date: '2020-06-03', color: 'pink' },
+    { title: 'event', date: '2020-06-05', color: 'blue' },
+    { title: 'event', date: '2020-06-07' }
+  ];
+  locale = esLocale;
+  header = { title: 'left', center: '', right: 'prev,next' };
+
   constructor() { }
 
-  ngOnInit() {
-    document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendar');
-    
-      let calendar = new Calendar(calendarEl, {
-        plugins: [ dayGridPlugin ],
-        defaultView: 'dayGridMonth'
-      });
-    
-      calendar.render();
-    });
-  }
+  ngOnInit() { }
 }

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DayPage implements OnInit {
 
+  classe = { data: 'Dilluns 2 de Maig', desc: 'Classe iniciació - Adults. Port de Valencia - 19:00 a 20:30'}
   constructor() { }
 
   ngOnInit() {
