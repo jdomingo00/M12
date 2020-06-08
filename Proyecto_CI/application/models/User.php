@@ -75,7 +75,7 @@
 	
 	
 			if ($query->num_rows() != 1) return null;
-			else return $this->createuserFromRawObject($query->result()[0]);
+			else return $this->createuserFromRawObject($query->result()[0]['tipo']);
 		}
 	}
 ?>

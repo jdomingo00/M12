@@ -46,10 +46,10 @@
 				);
 			} else {
 				$httpcode = RestController::HTTP_OK;
-				$message = $user->toArray();
+				$message = $user;
 			}
 
-			// parent::setHeaders();
+			parent::setHeaders();
 			$this->response($message, $httpcode);
 		}
 		
