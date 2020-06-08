@@ -5,12 +5,14 @@
 </ion-header>
 
 <ion-content>
-  <full-calendar
-  defaultView="dayGridMonth"
-  [plugins]="calendarPlugins"
-  [weekends]="false"
-  [events]="[
-    { title: 'event 1', date: '2019-04-01' },
-    { title: 'event 2', date: '2019-04-02' }
-  ]"></full-calendar>
+  <ion-card>
+    <full-calendar
+      defaultView= "dayGridMonth"
+      [plugins]= "calendarPlugins"
+      [header]= "header"
+      [height]= "parent"
+      [locale]= "locale"
+      [events]= "events">
+    </full-calendar>
+  </ion-card>
 </ion-content>
