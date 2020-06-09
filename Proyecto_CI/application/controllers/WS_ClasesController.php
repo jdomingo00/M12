@@ -28,7 +28,7 @@
 				}
 			}
 			
-			// parent::setHeaders();
+			$this->setHeaders();
 			$this->response($message, $httpcode);
 		}
 
@@ -48,7 +48,27 @@
 				}
 			}
 			
-			// parent::setHeaders();
+			$this->setHeaders();
+			$this->response($message, $httpcode);
+		}
+
+		protected function getClasesAlumno_get($alumno) {
+			$clases = $this->clase->getClasesAlumno($alumno);
+			
+			if (count($clases) == 0) {
+				$httpcode = RestController::HTTP_NOT_FOUND;
+				$message = array(
+					'msg' => 'Clases no encontradas'
+				);
+			} else {
+				$message = [];
+				$httpcode = RestController::HTTP_OK;
+				foreach ($clases as $clase) {
+					array_push($message, $clase->toArray());
+				}
+			}
+			
+			$this->setHeaders();
 			$this->response($message, $httpcode);
 		}
 
@@ -57,6 +77,10 @@
 		}
 
 		public function getClasesProfesor_options() {
+			$this->setOptions();
+		}
+
+		public function getClasesAlumno_options() {
 			$this->setOptions();
 		}
 		

@@ -14,7 +14,6 @@ export class ClasesContainer implements OnInit {
 
   ngOnInit(): void {
     this.claseService.getClases().subscribe( elem => {
-      console.log("HERE");
       this.clases = elem.body;
       console.log(this.clases);
     });

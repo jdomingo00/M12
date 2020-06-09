@@ -6,6 +6,7 @@
 		private $lugar;
 		private $nivel;
 		private $profesor;
+		private $color;
 	
 		public function getId() {
 			return $this->id;
@@ -30,6 +31,10 @@
 		public function getProfesor() {
 			return $this->profesor;
 		}
+
+		public function getColor() {
+			return $this->color;
+		}
 	
 		public function __construct() {
 			$this->id = '';
@@ -38,6 +43,7 @@
 			$this->lugar = '';
 			$this->nivel = '';
 			$this->profesor = '';
+			$this->color = '';
 	
 			// Càrrega i obertura de la BD
 			$this->load->database('escueladb');    // -> $this->db
@@ -56,8 +62,18 @@
 		}
 	
 		public function getClasesProfesor($profesor) {
-			// $query = $this->db->query("SELECT * FROM usuarios"); = pg_query();
 			$query = $this->db->get_where('clases', array('profesor' => $profesor));
+			$clases = [];
+			foreach ($query->result() as $data) {
+				$clase = $this->createClaseFromRawObject($data);
+				array_push($clases, $clase);
+			}
+			
+			return $clases;
+		}
+
+		public function getClasesAlumno($alumno) {
+			$query = $this->db->query("SELECT clases.* from clases INNER JOIN horarios on clases.ID=horarios.clase where horarios.alumno='" . $alumno . "';");
 			$clases = [];
 			foreach ($query->result() as $data) {
 				$clase = $this->createClaseFromRawObject($data);
@@ -76,6 +92,7 @@
 			$clase->lugar = $data->lugar;
 			$clase->nivel = $data->nivel;
 			$clase->profesor = $data->profesor;
+			$clase->color = $data->color;
 	
 			return $clase;
 		}
@@ -87,7 +104,8 @@
 				'dia' => $this->dia,
 				'lugar' => $this->lugar,
 				'nivel' => $this->nivel,
-				'profesor' => $this->profesor
+				'profesor' => $this->profesor,
+				'color' => $this->color
 			);
 		}
 	}

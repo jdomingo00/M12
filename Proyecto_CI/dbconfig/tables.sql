@@ -45,6 +45,7 @@ CREATE TABLE clases (
     lugar       varchar(20),
     nivel       varchar(50),
     profesor    varchar(9),
+	color		varchar(10),
     FOREIGN KEY (profesor) REFERENCES profesores (userName)
 );
 
@@ -81,9 +82,13 @@ INSERT INTO alumnos VALUES ('47902065A', '81dc9bdb52d04dc20036dbd8313ed055', 2, 
 INSERT INTO alumnos VALUES ('47902065E', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', true);
 INSERT INTO alumnos VALUES ('47902065F', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', false);
 
-INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-02', 'Puerto', 'Adulto - Iniciacion', '47902065B');
-INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Adulto - Iniciacion', '47902065B');
-INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Infantil - Iniciacion', '47902065C');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-02', 'Puerto', 'Adulto - Iniciacion', '47902065B', 'red');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Adulto - Iniciacion', '47902065B', 'red');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Infantil - Iniciacion', '47902065C', 'purple');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Infantil - Medio', '47902065C', 'purple');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Adulto - Medio', '47902065D', 'orange');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Particular', '47902065D', 'green');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Intensivo', '47902065C', 'blue');
 
 INSERT INTO tipoClases VALUES ('Adulto', 'Mejor tu patinaje y diviértete. Orientando a alumnos que saben patinar y quieren aprender más técnicas y habilidades.
 
@@ -92,5 +97,6 @@ Si has realizado un curso intensivo en nuestra escuela puedes acceder a nuestras
 Si tienes alguna duda sobre tu nivel u horarios, contacta con nosotros.');
 
 INSERT INTO horarios VALUES (1, '47902065A', false);
+INSERT INTO horarios VALUES (2, '47902065A', false);
 
 
