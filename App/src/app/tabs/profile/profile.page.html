@@ -6,5 +6,5 @@
 
 <ion-content fullscreen>
   <app-profile-view *ngIf="!edit" [datos]='datos' (edit)="goEdit()"></app-profile-view>
-  <app-profile-edit *ngIf="edit" [datos]='datos' (cancelar)="goEdit()" (edit)=editDatos($event)></app-profile-edit>
+  <app-profile-edit *ngIf="edit" [datos]='datos' (cancelar)="goEdit()" (edit)="editDatos($event)"></app-profile-edit>
 </ion-content>

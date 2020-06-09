@@ -14,6 +14,7 @@ CREATE TABLE usuarios (
     userName    varchar(9) PRIMARY KEY,
     passwd      varchar(60),
     tipo        int,
+	verificado  boolean,
     UNIQUE(userName)
 );
 
@@ -34,14 +35,13 @@ CREATE TABLE alumnos (
     apellidos   varchar(50),
     email       varchar(35),
     telefono    varchar(9),
-    verificado  boolean,
     PRIMARY KEY(userName)
 ) INHERITS (usuarios);
 
 CREATE TABLE clases (
     ID          SERIAL NOT NULL PRIMARY KEY,
     hora        time,
-    dia         varchar(10),
+    dia         date,
     lugar       varchar(20),
     nivel       varchar(50),
     profesor    varchar(9),
@@ -72,15 +72,15 @@ CREATE ROLE dbuser WITH LOGIN PASSWORD '1234';
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO dbuser;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO dbuser;
 
-INSERT INTO admins VALUES ('admin', '81dc9bdb52d04dc20036dbd8313ed055', 0);
+INSERT INTO admins VALUES ('admin', '81dc9bdb52d04dc20036dbd8313ed055', 0, true);
 
-INSERT INTO profesores VALUES ('47902065B', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
-INSERT INTO profesores VALUES ('47902065C', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
-INSERT INTO profesores VALUES ('47902065D', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO profesores VALUES ('47902065B', '81dc9bdb52d04dc20036dbd8313ed055', 1, true, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO profesores VALUES ('47902065C', '81dc9bdb52d04dc20036dbd8313ed055', 1, true, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO profesores VALUES ('47902065D', '81dc9bdb52d04dc20036dbd8313ed055', 1, true, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
 
-INSERT INTO alumnos VALUES ('47902065A', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', false);
-INSERT INTO alumnos VALUES ('47902065E', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', true);
-INSERT INTO alumnos VALUES ('47902065F', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', false);
+INSERT INTO alumnos VALUES ('47902065A', '81dc9bdb52d04dc20036dbd8313ed055', 2, false, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO alumnos VALUES ('47902065E', '81dc9bdb52d04dc20036dbd8313ed055', 2, true, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO alumnos VALUES ('47902065F', '81dc9bdb52d04dc20036dbd8313ed055', 2, false, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
 
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-02', 'Puerto', 'Adulto - Iniciacion', '47902065B', 'red');
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Adulto - Iniciacion', '47902065B', 'red');
@@ -89,6 +89,8 @@ INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Infanti
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Adulto - Medio', '47902065D', 'orange');
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Particular', '47902065D', 'green');
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Intensivo', '47902065C', 'blue');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-11', 'Puerto', 'Intensivo', '47902065C', 'blue');
+INSERT INTO clases VALUES (DEFAULT, '00:01:00', '2020-06-10', 'Puerto', 'Intensivo', '47902065C', 'blue');
 
 INSERT INTO tipoClases VALUES ('Adulto', 'Mejor tu patinaje y diviértete. Orientando a alumnos que saben patinar y quieren aprender más técnicas y habilidades.
 

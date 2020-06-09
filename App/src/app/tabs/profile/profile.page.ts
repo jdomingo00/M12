@@ -18,6 +18,10 @@ export class ProfilePage implements OnInit {
     if(this.tipo=='0') {
       this.router.navigate(['/tabs/alumnos']);
     }
+    this.getDatos();
+  }
+
+  getDatos() {
     this.profileService.getData().subscribe( elem => {
       this.datos = elem.body;
     });
@@ -28,7 +32,11 @@ export class ProfilePage implements OnInit {
   }
 
   editDatos(event) {
-    console.log(event);
-    this.profileService.editData(event);
+    this.profileService.editData(event).subscribe( elem => {
+      if(elem.ok) {
+        this.getDatos();
+        this.goEdit();
+      }
+    });
   }
 }

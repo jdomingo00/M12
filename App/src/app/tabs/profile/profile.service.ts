@@ -25,6 +25,15 @@ export class ProfileService {
   }
 
   editData(datos) {
+    console.log('tamos bien');
+    const options = {
+      observe: 'response' as 'body',
+    };
 
+    if(this.tipo == '1') {
+      return this.http.post<HttpResponse<any>>(this.URL + '/editProfesor/' + this.userName, {datos}, options);
+    } else {
+      return this.http.post<HttpResponse<any>>(this.URL + '/editAlumno/' + this.userName, {datos}, options);
+    }
   }
 }

@@ -77,6 +77,12 @@
 			return $alumnos;
 		}
 
+		public function editAlumno($datos, $alumno) {
+			$query = $this->db->query("UPDATE alumnos set nombre ='" . $datos['nombre'] . "', apellidos ='" . $datos['apellidos'] . "', telefono ='" . $datos['telefono'] . "', email ='" . $datos['email'] . "' WHERE username = '" . $alumno . "';");
+		
+			return $query;
+		}
+
 		private function createAlumnoFromRawObject($data) {
 			$alumno = new Alumno();
 	

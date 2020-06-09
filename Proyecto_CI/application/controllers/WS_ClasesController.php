@@ -32,6 +32,23 @@
 			$this->response($message, $httpcode);
 		}
 
+		protected function getNextClase_get($profesor) {
+			$clases = $this->clase->getNextClase($profesor);
+			
+			if ($clases == null) {
+				$httpcode = RestController::HTTP_NOT_FOUND;
+				$message = array(
+					'msg' => 'Clase no trobades'
+				);
+			} else {
+				$message = $clases;
+				$httpcode = RestController::HTTP_OK;
+			}
+			
+			$this->setHeaders();
+			$this->response($message, $httpcode);
+		}
+
 		protected function getClasesProfesor_get($profesor) {
 			$clases = $this->clase->getClasesProfesor($profesor);
 			
@@ -73,6 +90,10 @@
 		}
 
 		public function getClases_options() {
+			$this->setOptions();
+		}
+
+		public function getNextClase_options() {
 			$this->setOptions();
 		}
 

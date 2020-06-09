@@ -50,11 +50,36 @@
 			$this->response($message, $httpcode);
 		}
 
+		protected function editAlumno_post($alumno) {
+			$datos = $this->post('datos');
+
+			$result = $this->alumno->editAlumno($datos, $alumno);
+
+			if($result) {
+				$httpcode = RestController::HTTP_OK;
+				$message = array(
+					'msg' => 'Editado con exito'
+				);
+			} else {
+				$httpcode = RestController::HTTP_INTERNAL_ERROR;
+				$message = array(
+					'msg' => 'Error'
+				);
+			}
+
+			$this->setHeaders();
+			$this->response($message, $httpcode);
+		}
+
 		public function getAlumnos_options() {
 			$this->setOptions();
 		}
 
 		public function getAlumno_options() {
+			$this->setOptions();
+		}
+
+		public function editAlumno_options() {
 			$this->setOptions();
 		}
 		

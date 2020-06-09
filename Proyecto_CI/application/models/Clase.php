@@ -50,8 +50,7 @@
 		}
 
 		public function getClases() {
-			// $query = $this->db->query("SELECT * FROM usuarios"); = pg_query();
-			$query = $this->db->get('clases');    // SELECT * FROM clases;
+			$query = $this->db->get('clases');
 			$clases = [];
 			foreach ($query->result() as $data) {
 				$clase = $this->createClaseFromRawObject($data);
@@ -59,6 +58,13 @@
 			}
 			
 			return $clases;
+		}
+
+		public function getNextClase($profesor) {
+			$query = $this->db->query("SELECT * from clases where dia>=CURRENT_DATE and hora<(CURRENT_TIME(0) + '01:00:00'::interval) and profesor = '" . $profesor . "' order by hora,dia asc limit 1;");
+			
+			if ($query->num_rows() != 1) return null;
+			else return $query->result_array()[0];
 		}
 	
 		public function getClasesProfesor($profesor) {

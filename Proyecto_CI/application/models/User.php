@@ -70,7 +70,7 @@
 
 
 		public function login($userName, $passwd) {
-			$condition = array('username' => $userName, 'passwd' => $passwd);
+			$condition = array('username' => $userName, 'passwd' => $passwd, 'verificado' => true);
 			$query = $this->db->get_where('usuarios', $condition);
 	
 			if ($query->num_rows() != 1) return null;
