@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpParams, HttpHeaders } from '@angular/common/http';
-import { User } from './User.model';
+import { User } from './app.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +24,10 @@ export class AppApi {
     return this.http.get<HttpResponse<any>>(this.API + '/login', options);
   }
 
-  logout(token: string, uname: string) {
+  logout(userName) {
     let headers = new HttpHeaders();
 
-    headers = headers.set('Authorization', 'Bearer ' + token);
+    headers = headers.set('Authorization', 'Bearer');
     headers = headers.set('Access-Control-Expose-Headers', 'Authorization');
 
     const options = {
@@ -35,7 +35,7 @@ export class AppApi {
       headers
     };
 
-    return this.http.post(this.API + '/logoutAdmin', { uname }, options);
+    return this.http.post(this.API + '/logoutAdmin', { userName }, options);
   }
 
   register(user, data) {
