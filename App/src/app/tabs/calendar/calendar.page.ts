@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import dayGridPlugin from '@fullcalendar/daygrid';
 import esLocale from '@fullcalendar/core/locales/es';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendar',
@@ -28,9 +29,13 @@ export class CalendarPage implements OnInit {
   locale = esLocale;
   header = { title: 'left', center: '', right: 'prev,next' };
 
-  constructor() { }
+  tipo = localStorage.getItem('escuelavlc-tipo');
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    if(this.tipo=='0') {
+      this.router.navigate(['/tabs/alumnos']);
+    }
     this.setEvents(this.clases)
   }
 

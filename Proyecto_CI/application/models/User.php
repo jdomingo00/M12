@@ -40,7 +40,7 @@
 	
 		private function createUserFromRawObject($data) {
 			$user = new User();
-	
+
 			$user->username = $data->username;
 			$user->passwd = $data->passwd;
 			$user->tipo = $data->tipo;
@@ -70,12 +70,11 @@
 
 
 		public function login($userName, $passwd) {
-			$condition = array('userName' => $userName, 'passwd' => $passwd);
+			$condition = array('username' => $userName, 'passwd' => $passwd);
 			$query = $this->db->get_where('usuarios', $condition);
 	
-	
 			if ($query->num_rows() != 1) return null;
-			else return $this->createuserFromRawObject($query->result()[0]['tipo']);
+			else return $query->result_array()[0]['tipo'];
 		}
 	}
 ?>

@@ -11,13 +11,13 @@
         <ion-label position="stacked">User</ion-label>
         <ion-input required type="text" formControlName="userName"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label position="stacked">Contraseña</ion-label>
         <ion-input required type="password" formControlName="passwd"></ion-input>
       </ion-item>
 
-      <ion-button type="submit" >Login</ion-button>
+      <ion-button type="submit" (click)="onSubmit()">Login</ion-button>
     </form>
   </ion-card>
 </ion-content>

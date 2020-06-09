@@ -36,21 +36,28 @@
 			$this->setOptions();
 		}
 		
-		protected function login_get($userName, $passwd) {
-			$user = $this->user->login($userName, $passwd);
+		protected function login_post() {
+			$userName = $this->post('userName');
+			$passwd = $this->post('passwd');
+			
+			$userTipo = $this->user->login($userName, $passwd);
 
-			if($user == null) {
+			if($userTipo == null) {
 				$httpcode = RestController::HTTP_NOT_FOUND;
 				$message = array(
-					'msg' => 'User ' . $userName . ' no trobat'
+					'msg' => 'Login erroneo'
 				);
 			} else {
 				$httpcode = RestController::HTTP_OK;
-				$message = $user;
+				$message = $userTipo;
 			}
 
-			parent::setHeaders();
+			$this->setHeaders();
 			$this->response($message, $httpcode);
+		}
+
+		public function login_options() {
+			$this->setOptions();
 		}
 		
 		protected function setHeaders($token = null) {

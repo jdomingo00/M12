@@ -12,7 +12,7 @@ DROP TABLE  IF EXISTS usuarios;
 
 CREATE TABLE usuarios (
     userName    varchar(9) PRIMARY KEY,
-    passwd      varchar(20),
+    passwd      varchar(60),
     tipo        int,
     UNIQUE(userName)
 );
@@ -71,15 +71,15 @@ CREATE ROLE dbuser WITH LOGIN PASSWORD '1234';
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO dbuser;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO dbuser;
 
-INSERT INTO admins VALUES ('admin', '1234', 0);
+INSERT INTO admins VALUES ('admin', '81dc9bdb52d04dc20036dbd8313ed055', 0);
 
-INSERT INTO profesores VALUES ('47902065B', '1234', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
-INSERT INTO profesores VALUES ('47902065C', '1234', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
-INSERT INTO profesores VALUES ('47902065D', '1234', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO profesores VALUES ('47902065B', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO profesores VALUES ('47902065C', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO profesores VALUES ('47902065D', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
 
-INSERT INTO alumnos VALUES ('47902065A', '1234', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', false);
-INSERT INTO alumnos VALUES ('47902065E', '1234', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', true);
-INSERT INTO alumnos VALUES ('47902065F', '1234', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', false);
+INSERT INTO alumnos VALUES ('47902065A', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', false);
+INSERT INTO alumnos VALUES ('47902065E', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', true);
+INSERT INTO alumnos VALUES ('47902065F', '81dc9bdb52d04dc20036dbd8313ed055', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', false);
 
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-02', 'Puerto', 'Adulto - Iniciacion', '47902065B');
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Adulto - Iniciacion', '47902065B');

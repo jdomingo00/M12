@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
+  tipo = localStorage.getItem('escuelavlc-tipo');
   constructor() { }
 
   ngOnInit() {
