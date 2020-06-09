@@ -3,28 +3,28 @@
 	require_once(APPPATH . 'libraries/codeigniter-restserver/src/RestController.php');
 	require_once(APPPATH . 'libraries/codeigniter-restserver/src/Format.php');
 
-    class WS_UsersController extends RestController {
+    class WS_ClasesController extends RestController {
 
         public function __construct() {
 			parent::__construct();
 
-			$this->load->model('user');
+			$this->load->model('clase');
 		}
 
 		
-		protected function getUsers_get() {
-			$users = $this->user->getUsers();
+		protected function getClases_get() {
+			$clases = $this->clase->getClases();
 			
-			if (count($users) == 0) {
+			if (count($clases) == 0) {
 				$httpcode = RestController::HTTP_NOT_FOUND;
 				$message = array(
-					'msg' => 'Users no encontrados'
+					'msg' => 'Clases no trobades'
 				);
 			} else {
 				$message = [];
 				$httpcode = RestController::HTTP_OK;
-				foreach ($users as $user) {
-					array_push($message, $user->toArray());
+				foreach ($clases as $clase) {
+					array_push($message, $clase->toArray());
 				}
 			}
 			
@@ -32,25 +32,32 @@
 			$this->response($message, $httpcode);
 		}
 
-		public function getUsers_options() {
-			$this->setOptions();
-		}
-		
-		protected function login_get($userName, $passwd) {
-			$user = $this->user->login($userName, $passwd);
-
-			if($user == null) {
+		protected function getClasesProfesor_get($profesor) {
+			$clases = $this->clase->getClasesProfesor($profesor);
+			
+			if (count($clases) == 0) {
 				$httpcode = RestController::HTTP_NOT_FOUND;
 				$message = array(
-					'msg' => 'User ' . $userName . ' no trobat'
+					'msg' => 'Clases no encontradas'
 				);
 			} else {
+				$message = [];
 				$httpcode = RestController::HTTP_OK;
-				$message = $user;
+				foreach ($clases as $clase) {
+					array_push($message, $clase->toArray());
+				}
 			}
-
-			parent::setHeaders();
+			
+			// parent::setHeaders();
 			$this->response($message, $httpcode);
+		}
+
+		public function getClases_options() {
+			$this->setOptions();
+		}
+
+		public function getClasesProfesor_options() {
+			$this->setOptions();
 		}
 		
 		protected function setHeaders($token = null) {

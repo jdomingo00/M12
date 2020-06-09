@@ -3,28 +3,28 @@
 	require_once(APPPATH . 'libraries/codeigniter-restserver/src/RestController.php');
 	require_once(APPPATH . 'libraries/codeigniter-restserver/src/Format.php');
 
-    class WS_UsersController extends RestController {
+    class WS_AlumnosController extends RestController {
 
         public function __construct() {
 			parent::__construct();
 
-			$this->load->model('user');
+			$this->load->model('alumno');
 		}
 
 		
-		protected function getUsers_get() {
-			$users = $this->user->getUsers();
+		protected function getAlumnos_get() {
+			$alumnos = $this->alumno->getAlumnos();
 			
-			if (count($users) == 0) {
+			if (count($alumnos) == 0) {
 				$httpcode = RestController::HTTP_NOT_FOUND;
 				$message = array(
-					'msg' => 'Users no encontrados'
+					'msg' => 'Alumnos no encontrados'
 				);
 			} else {
 				$message = [];
 				$httpcode = RestController::HTTP_OK;
-				foreach ($users as $user) {
-					array_push($message, $user->toArray());
+				foreach ($alumnos as $alumno) {
+					array_push($message, $alumno->toArray());
 				}
 			}
 			
@@ -32,25 +32,8 @@
 			$this->response($message, $httpcode);
 		}
 
-		public function getUsers_options() {
+		public function getAlumnos_options() {
 			$this->setOptions();
-		}
-		
-		protected function login_get($userName, $passwd) {
-			$user = $this->user->login($userName, $passwd);
-
-			if($user == null) {
-				$httpcode = RestController::HTTP_NOT_FOUND;
-				$message = array(
-					'msg' => 'User ' . $userName . ' no trobat'
-				);
-			} else {
-				$httpcode = RestController::HTTP_OK;
-				$message = $user;
-			}
-
-			parent::setHeaders();
-			$this->response($message, $httpcode);
 		}
 		
 		protected function setHeaders($token = null) {
@@ -68,3 +51,4 @@
 		}
     }
 ?>
+
