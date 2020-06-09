@@ -11,6 +11,7 @@ import { ClasesContainer } from './pages/clases/clases.container';
 import { ContactoContainer } from './pages/contacto/contacto.container';
 import { HorariosContainer } from './pages/horarios/horarios.container';
 import { TarifasContainer } from './pages/tarifas/tarifas.container';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,11 +24,11 @@ import { TarifasContainer } from './pages/tarifas/tarifas.container';
     ContactoContainer,
     HorariosContainer,
     TarifasContainer
-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

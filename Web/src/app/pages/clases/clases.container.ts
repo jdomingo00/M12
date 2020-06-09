@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClasesService } from 'src/app/shared/services/clases.service';
 
 @Component({
   selector: 'app-clases',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClasesContainer implements OnInit {
 
-  constructor() { }
+  clases = [];
+
+  constructor(private claseService: ClasesService) { }
 
   ngOnInit(): void {
+    this.claseService.getClases().subscribe( elem => {
+      console.log("HERE");
+      this.clases = elem.body;
+      console.log(this.clases);
+    });
   }
 
 }
