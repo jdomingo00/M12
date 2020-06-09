@@ -1,0 +1,31 @@
+<ion-card>
+  <ion-img src="../../assets/img/img.jpg"></ion-img>
+</ion-card>
+<ion-card class="card">
+  <ion-card>
+    <ion-item>
+      <ion-label position="stacked">Nombre</ion-label>
+      <ion-text> {{ datos.nombre }} </ion-text>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Apellidos</ion-label>
+      <ion-text>{{ datos.apellidos }}</ion-text>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+      <ion-label position="stacked">Telefono</ion-label>
+      <ion-text>{{ datos.telefono }}</ion-text>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="stacked">Correo</ion-label>
+      <ion-text>{{ datos.email }}</ion-text>
+    </ion-item>
+  </ion-card>
+
+  <div class="ion-padding">
+    <ion-button expand="block" type="button" class="ion-no-margin" (click)="goEdit()">Editar perfil</ion-button>
+  </div>
+</ion-card>

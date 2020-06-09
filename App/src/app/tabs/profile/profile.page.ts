@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProfileService } from './profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,11 +10,25 @@ import { Router } from '@angular/router';
 export class ProfilePage implements OnInit {
 
   tipo = localStorage.getItem('escuelavlc-tipo');
-  constructor(private router: Router) { }
+  edit = false;
+  datos = '';
+  constructor(private router: Router, private profileService: ProfileService) { }
 
   ngOnInit() {
     if(this.tipo=='0') {
       this.router.navigate(['/tabs/alumnos']);
     }
+    this.profileService.getData().subscribe( elem => {
+      this.datos = elem.body;
+    });
+  }
+
+  goEdit() {
+    this.edit=!this.edit;
+  }
+
+  editDatos(event) {
+    console.log(event);
+    this.profileService.editData(event);
   }
 }

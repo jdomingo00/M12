@@ -3,28 +3,28 @@
 	require_once(APPPATH . 'libraries/codeigniter-restserver/src/RestController.php');
 	require_once(APPPATH . 'libraries/codeigniter-restserver/src/Format.php');
 
-    class WS_AlumnosController extends RestController {
+    class WS_ProfesoresController extends RestController {
 
         public function __construct() {
 			parent::__construct();
 
-			$this->load->model('alumno');
+			$this->load->model('profesor');
 		}
 
 		
-		protected function getAlumnos_get() {
-			$alumnos = $this->alumno->getAlumnos();
+		protected function getProfesores_get() {
+			$profesores = $this->profesor->getProfesores();
 			
-			if (count($alumnos) == 0) {
+			if (count($profesores) == 0) {
 				$httpcode = RestController::HTTP_NOT_FOUND;
 				$message = array(
-					'msg' => 'Alumnos no encontrados'
+					'msg' => 'Profesores no encontrados'
 				);
 			} else {
 				$message = [];
 				$httpcode = RestController::HTTP_OK;
-				foreach ($alumnos as $alumno) {
-					array_push($message, $alumno->toArray());
+				foreach ($profesores as $profesor) {
+					array_push($message, $profesor->toArray());
 				}
 			}
 			
@@ -32,29 +32,28 @@
 			$this->response($message, $httpcode);
 		}
 
-		protected function getAlumno_get($alumno) {
-			$alumnos = $this->alumno->getAlumno($alumno);
+		protected function getProfesor_get($profesor) {
+			$profesores = $this->profesor->getProfesor($profesor);
 			
-			if (count($alumnos) == 0) {
+			if (count($profesores) == 0) {
 				$httpcode = RestController::HTTP_NOT_FOUND;
 				$message = array(
-					'msg' => 'Alumnos no encontrados'
+					'msg' => 'Profesor no encontrados'
 				);
 			} else {
-				$message = $alumnos[0]->toArray();
+				$message = $profesores[0]->toArray();
 				$httpcode = RestController::HTTP_OK;
-
 			}
 			
 			$this->setHeaders();
 			$this->response($message, $httpcode);
 		}
 
-		public function getAlumnos_options() {
+		public function getProfesores_options() {
 			$this->setOptions();
 		}
 
-		public function getAlumno_options() {
+		public function getProfesor_options() {
 			$this->setOptions();
 		}
 		

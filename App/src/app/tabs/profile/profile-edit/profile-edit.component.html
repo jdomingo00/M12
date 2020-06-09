@@ -1,0 +1,40 @@
+<ion-card>
+  <ion-img src="../../assets/img/img.jpg"></ion-img>
+</ion-card>
+<ion-card>
+  <form [formGroup]="editForm">
+    <ion-card>
+      <ion-item>
+        <ion-label position="stacked">Nombre <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="text" formControlName="nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Apellidos <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="text" formControlName="apellidos"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-label position="stacked">Telefono <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="text" formControlName="telefono"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Correo <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="email" formControlName="email"></ion-input>
+      </ion-item>
+    </ion-card>
+
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin" (click)="onGuardar()">Guardar</ion-button>
+      <ion-button expand="block" type="submit" color="danger" class="ion-no-margin" (click)="onCancel()">Canelar
+      </ion-button>
+    </div>
+  </form>
+</ion-card>

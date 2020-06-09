@@ -23,7 +23,7 @@ CREATE TABLE admins (
 
 CREATE TABLE profesores (
     nombre      varchar(15),
-    apellido    varchar(50),
+    apellidos    varchar(50),
     email       varchar(35),
     telefono    varchar(9),
     PRIMARY KEY(userName)
@@ -98,5 +98,7 @@ Si tienes alguna duda sobre tu nivel u horarios, contacta con nosotros.');
 
 INSERT INTO horarios VALUES (1, '47902065A', false);
 INSERT INTO horarios VALUES (2, '47902065A', false);
+INSERT INTO horarios VALUES (2, '47902065E', false);
+INSERT INTO horarios VALUES (2, '47902065F', false);
 
 

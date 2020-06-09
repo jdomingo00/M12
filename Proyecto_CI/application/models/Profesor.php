@@ -1,5 +1,5 @@
 <?php
-	class Alumno extends CI_Model {
+	class Profesor extends CI_Model {
 		private $username;
 		private $passwd;
 		private $tipo;
@@ -7,7 +7,6 @@
 		private $apellidos;
 		private $email;
 		private $telefono;
-		private $verificado;
 	
 		public function getUserName() {
 			return $this->username;
@@ -36,10 +35,6 @@
 		public function getTelefono() {
 			return $this->telefono;
 		}
-
-		public function getVerificado() {
-			return $this->verificado;
-		}
 	
 		public function __construct() {
 			$this->username = '';
@@ -49,47 +44,45 @@
 			$this->apellidos = '';
 			$this->email = '';
 			$this->telefono = '';
-			$this->verificado = '';
 	
 			// Càrrega i obertura de la BD
 			$this->load->database('escueladb');    // -> $this->db
 		}
 
-		public function getAlumnos() {
-			$query = $this->db->get('alumnos');    // SELECT * FROM alumnos;
-			$alumnos = [];
+		public function getProfesores() {
+			$query = $this->db->get('profesores');    // SELECT * FROM profesores;
+			$profesores = [];
 			foreach ($query->result() as $data) {
-				$alumno = $this->createAlumnoFromRawObject($data);
-				array_push($alumnos, $alumno);
+				$profesor = $this->createProfesorFromRawObject($data);
+				array_push($profesores, $profesor);
 			}
 			
-			return $alumnos;
+			return $profesores;
 		}
 
-		public function getAlumno($alumno) {
-			$query = $this->db->get_where('alumnos', array('username' => $alumno));
-			$alumnos = [];
+		public function getProfesor($profesor) {
+			$query = $this->db->get_where('profesores', array('username' => $profesor));
+			$profesores = [];
 			foreach ($query->result() as $data) {
-				$alumno = $this->createAlumnoFromRawObject($data);
-				array_push($alumnos, $alumno);
+				$profesor = $this->createProfesorFromRawObject($data);
+				array_push($profesores, $profesor);
 			}
 			
-			return $alumnos;
+			return $profesores;
 		}
 
-		private function createAlumnoFromRawObject($data) {
-			$alumno = new Alumno();
+		private function createProfesorFromRawObject($data) {
+			$profesor = new Profesor();
 	
-			$alumno->username = $data->username;
-			$alumno->passwd = $data->passwd;
-			$alumno->tipo = $data->tipo;
-			$alumno->nombre = $data->nombre;
-			$alumno->apellidos = $data->apellidos;
-			$alumno->email = $data->email;
-			$alumno->telefono = $data->telefono;
-			$alumno->verificado = $data->verificado;
+			$profesor->username = $data->username;
+			$profesor->passwd = $data->passwd;
+			$profesor->tipo = $data->tipo;
+			$profesor->nombre = $data->nombre;
+			$profesor->apellidos = $data->apellidos;
+			$profesor->email = $data->email;
+			$profesor->telefono = $data->telefono;
 	
-			return $alumno;
+			return $profesor;
 		}
 
 		public function toArray() {
@@ -100,8 +93,7 @@
 				'nombre' => $this->nombre,
 				'apellidos' => $this->apellidos,
 				'email' => $this->email,
-				'telefono' => $this->telefono,
-				'verificado' => $this->verificado
+				'telefono' => $this->telefono
 			);
 		}
 	}
