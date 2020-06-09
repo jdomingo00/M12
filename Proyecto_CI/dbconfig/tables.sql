@@ -33,6 +33,7 @@ CREATE TABLE alumnos (
     apellidos   varchar(50),
     email       varchar(35),
     telefono    varchar(9),
+    verificado  boolean,
     PRIMARY KEY(userName)
 ) INHERITS (usuarios);
 
@@ -46,9 +47,15 @@ CREATE TABLE clases (
     FOREIGN KEY (profesor) REFERENCES profesores (userName)
 );
 
+CREATE TABLE tipoClase (
+    nivel       varchar(30),
+    descripcion text
+);
+
 CREATE TABLE horarios (
-    clase   int,
-    alumno  varchar(9),
+    clase       int,
+    alumno      varchar(9),
+    asistencia  boolean,
     PRIMARY KEY (clase, alumno),
     FOREIGN KEY (alumno) REFERENCES alumnos (userName),
     FOREIGN KEY (clase) REFERENCES clases (ID)
@@ -67,10 +74,16 @@ INSERT INTO admins VALUES ('admin', '1234', 0);
 
 INSERT INTO profesores VALUES ('47902065B', '1234', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
 
-INSERT INTO alumnos VALUES ('47902065A', '1234', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO alumnos VALUES ('47902065A', '1234', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', false);
 
-INSERT INTO clases VALUES (DEFAULT, '19:00:00', 'Lunes', 'Puerto', 'Adulto - Iniciacion', '47902065B');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-02', 'Puerto', 'Adulto - Iniciacion', '47902065B');
 
-INSERT INTO horarios VALUES (1, '47902065A');
+INSERT INTO tipoClase VALUES ('Adulto', 'Mejor tu patinaje y diviértete. Orientando a alumnos que saben patinar y quieren aprender más técnicas y habilidades.
+
+Si has realizado un curso intensivo en nuestra escuela puedes acceder a nuestras clases, desde mitad de Septiembre a Julio.
+
+Si tienes alguna duda sobre tu nivel u horarios, contacta con nosotros.');
+
+INSERT INTO horarios VALUES (1, '47902065A', false);
 
 
