@@ -6,13 +6,11 @@
 
 <ion-content>
   <ion-card>
-    <full-calendar
-      defaultView= "dayGridMonth"
-      [plugins]= "calendarPlugins"
-      [header]= "header"
-      [height]= "parent"
-      [locale]= "locale"
-      [events]= "events">
+    <full-calendar *ngIf="clases.length>0" defaultView="dayGridMonth" [plugins]="calendarPlugins" [header]="header"
+      [height]="'parent'" [locale]="locale" [events]="events">
+    </full-calendar>
+    <full-calendar *ngIf="clases.length==0" defaultView="dayGridMonth" [plugins]="calendarPlugins" [header]="header"
+      [height]="'parent'" [locale]="locale" [events]="events">
     </full-calendar>
   </ion-card>
 </ion-content>
