@@ -7,6 +7,7 @@
 		private $apellidos;
 		private $email;
 		private $telefono;
+		private $verificado;
 	
 		// public function getUserName() {
 		// 	return $this->userName;
@@ -35,6 +36,10 @@
 		public function getTelefono() {
 			return $this->telefono;
 		}
+
+		public function getVerificado() {
+			return $this->verificado;
+		}
 	
 		public function __construct() {
 			// $this->userName = '';
@@ -44,6 +49,7 @@
 			$this->apellidos = '';
 			$this->email = '';
 			$this->telefono = '';
+			$this->verificado = '';
 	
 			// Càrrega i obertura de la BD
 			$this->load->database('escueladb');    // -> $this->db
@@ -71,6 +77,7 @@
 			$alumno->apellidos = $data->apellidos;
 			$alumno->email = $data->email;
 			$alumno->telefono = $data->telefono;
+			$alumno->verificado = $data->verificado;
 	
 			return $alumno;
 		}
@@ -83,7 +90,8 @@
 				'nombre' => $this->nombre,
 				'apellidos' => $this->apellidos,
 				'email' => $this->email,
-				'telefono' => $this->telefono
+				'telefono' => $this->telefono,
+				'verificado' => $this->verificado
 			);
 		}
 	}

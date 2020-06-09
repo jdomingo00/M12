@@ -21,6 +21,18 @@ const routes: Routes = [
         loadChildren: () => import('../tabs/profile/profile.module').then( m => m.ProfilePageModule)
       },
       {
+        path: 'list',
+        loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+      },
+      {
+        path: 'alumnos',
+        loadChildren: () => import('./alumnos/alumnos.module').then( m => m.AlumnosPageModule)
+      },
+      {
+        path: 'profes',
+        loadChildren: () => import('./profes/profes.module').then( m => m.ProfesPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/day',
         pathMatch: 'full'

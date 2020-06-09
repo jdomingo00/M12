@@ -3,6 +3,7 @@ CREATE DATABASE escueladb;
 \c escueladb;
 
 DROP TABLE  IF EXISTS horarios;
+DROP TABLE  IF EXISTS tipoClases;
 DROP TABLE  IF EXISTS clases;
 DROP TABLE  IF EXISTS alumnos;
 DROP TABLE  IF EXISTS profesores;
@@ -40,14 +41,14 @@ CREATE TABLE alumnos (
 CREATE TABLE clases (
     ID          SERIAL NOT NULL PRIMARY KEY,
     hora        time,
-    dia         varchar(9),
+    dia         varchar(10),
     lugar       varchar(20),
     nivel       varchar(50),
     profesor    varchar(9),
     FOREIGN KEY (profesor) REFERENCES profesores (userName)
 );
 
-CREATE TABLE tipoClase (
+CREATE TABLE tipoClases (
     nivel       varchar(30),
     descripcion text
 );
@@ -73,12 +74,18 @@ GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO dbuser;
 INSERT INTO admins VALUES ('admin', '1234', 0);
 
 INSERT INTO profesores VALUES ('47902065B', '1234', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO profesores VALUES ('47902065C', '1234', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO profesores VALUES ('47902065D', '1234', 1, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
 
 INSERT INTO alumnos VALUES ('47902065A', '1234', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', false);
+INSERT INTO alumnos VALUES ('47902065E', '1234', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', true);
+INSERT INTO alumnos VALUES ('47902065F', '1234', 2, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635', false);
 
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-02', 'Puerto', 'Adulto - Iniciacion', '47902065B');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Adulto - Iniciacion', '47902065B');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Infantil - Iniciacion', '47902065C');
 
-INSERT INTO tipoClase VALUES ('Adulto', 'Mejor tu patinaje y diviértete. Orientando a alumnos que saben patinar y quieren aprender más técnicas y habilidades.
+INSERT INTO tipoClases VALUES ('Adulto', 'Mejor tu patinaje y diviértete. Orientando a alumnos que saben patinar y quieren aprender más técnicas y habilidades.
 
 Si has realizado un curso intensivo en nuestra escuela puedes acceder a nuestras clases, desde mitad de Septiembre a Julio.
 

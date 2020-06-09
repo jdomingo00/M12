@@ -53,6 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['prueba'] = 'WS_PruebaController/getPrueba';
 $route['getUsers'] = 'WS_UsersController/getUsers';
 $route['getClases'] = 'WS_ClasesController/getClases';
+$route['getTipoClases'] = 'WS_TipoClasesController/getTipoClases';
 $route['getAlumnos'] = 'WS_AlumnosController/getAlumnos';
 $route['getClasesProfesor/(:any)'] = 'WS_ClasesController/getClasesProfesor/$1';
 $route['login'] = 'WS_UsersController/login';
