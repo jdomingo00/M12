@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profes',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfesPage implements OnInit {
 
-  constructor() { }
+  tipo = localStorage.getItem('escuelavlc-tipo');
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    if(this.tipo!='0') {
+      this.router.navigate(['/tabs/day']);
+    }
   }
 
 }
