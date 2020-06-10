@@ -77,6 +77,18 @@
 			return $query;
 		}
 
+		public function insertProfesor($datos) {
+			$query = $this->db->query("INSERT INTO profesores VALUES ('" . $datos['username'] . "', '" . $datos['passwd'] . "', 1, true, '" . $datos['nombre'] . "', '" . $datos['apellidos'] . "', '" . $datos['email'] . "', '" . $datos['telefono'] . "');");
+		
+			return $query;
+		}
+
+		public function getListAlumnosProf($profesor) {
+			$query = $this->db->query("SELECT alumnos.nombre, alumnos.apellidos from alumnos inner join horarios on alumnos.username=horarios.alumno where horarios.clase = (SELECT clases.ID from clases where dia>=CURRENT_DATE and hora<(CURRENT_TIME(0) + '01:00:00'::interval) and profesor = '" . $profesor . "' order by hora,dia asc limit 1);");
+			
+			return $query->result_array();
+		}
+
 		private function createProfesorFromRawObject($data) {
 			$profesor = new Profesor();
 	

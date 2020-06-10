@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { InscribirRoutingModule } from './inscribir-routing.module';
 import { InscribirContainer } from './inscribir.container';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [InscribirContainer],
   imports: [
     CommonModule,
-    InscribirRoutingModule
+    InscribirRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class InscribirModule { }

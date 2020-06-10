@@ -7,41 +7,41 @@
       <hr>
     </div>
   </div>
-  <form>
+  <form [formGroup]="insertForm">
     <div class="form-row pt-4">
       <div class="form-group offset-2 col-4">
         <label for="inputEmail4">Nombre</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="nombre">
       </div>
       <div class="form-group col-4">
         <label for="inputPassword4">Apellidos</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="apellidos">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group offset-2 col-4">
         <label for="inputEmail4">DNI</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="username">
       </div>
       <div class="form-group col-4">
         <label for="inputPassword4">Contraseña</label>
-        <input type="password" class="form-control">
+        <input type="password" class="form-control" formControlName="passwd">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group offset-2 col-4 ">
         <label for="inputAddress">Email</label>
-        <input type="email" class="form-control">
+        <input type="email" class="form-control" formControlName="email">
       </div>
       <div class="form-group col-4">
         <label for="inputCity">Telefono</label>
-        <input type="tel" class="form-control">
+        <input type="text" class="form-control" formControlName="telefono">
       </div>
     </div>
 
     <div class="form-row pt-3 pb-4">
       <div class="form-group offset-2 col-3">
-        <button type="submit" class="btn btn-outline-dark px-5">Inscribirme</button>
+        <button type="button" class="btn btn-outline-dark px-5" (click)="insert()">Inscribirme</button>
       </div>
     </div>
   </form>

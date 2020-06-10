@@ -66,6 +66,17 @@
 			return $alumnos;
 		}
 
+		public function getAlumnosNoVerificados() {
+			$query = $this->db->get_where('alumnos', array('verificado' => false));
+			$alumnos = [];
+			foreach ($query->result() as $data) {
+				$alumno = $this->createAlumnoFromRawObject($data);
+				array_push($alumnos, $alumno);
+			}
+			
+			return $alumnos;
+		}
+
 		public function getAlumno($alumno) {
 			$query = $this->db->get_where('alumnos', array('username' => $alumno));
 			$alumnos = [];
@@ -79,6 +90,24 @@
 
 		public function editAlumno($datos, $alumno) {
 			$query = $this->db->query("UPDATE alumnos set nombre ='" . $datos['nombre'] . "', apellidos ='" . $datos['apellidos'] . "', telefono ='" . $datos['telefono'] . "', email ='" . $datos['email'] . "' WHERE username = '" . $alumno . "';");
+		
+			return $query;
+		}
+
+		public function editAlumnoAsistencia($variable, $alumno) {
+			$query = $this->db->query("UPDATE horarios set asistencia = '" . $variable . "' WHERE alumno = '" . $alumno . "' and horarios.clase = (SELECT clases.ID from clases where horarios.alumno='" . $alumno . "' and clases.dia>=CURRENT_DATE and clases.hora<(CURRENT_TIME(0) + '01:00:00'::interval) order by hora,dia asc limit 1);");
+		
+			return $query;
+		}
+
+		public function verificarAlumno($alumno) {
+			$query = $this->db->query("UPDATE alumnos set verificado = true WHERE username = '" . $alumno . "';");
+		
+			return $query;
+		}
+
+		public function insertAlumno($datos) {
+			$query = $this->db->query("INSERT INTO alumnos VALUES ('" . $datos['username'] . "', '" . $datos['passwd'] . "', 2, false, '" . $datos['nombre'] . "', '" . $datos['apellidos'] . "', '" . $datos['email'] . "', '" . $datos['telefono'] . "');");
 		
 			return $query;
 		}

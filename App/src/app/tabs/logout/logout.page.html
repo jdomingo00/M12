@@ -4,16 +4,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-align-items-center">
   <ion-card>
     <ion-item lines="full">
       <ion-text>Estás seguro de que quieres cerrar la sesión?</ion-text>
     </ion-item>
 
     <ion-item lines="none">
-      <ion-button size="default" slot="start" (click)="onAceptar()">Aceptar
+      <ion-button size="default" fill="outline" color="success" slot="start" (click)="onAceptar()">Aceptar
       </ion-button>
-      <ion-button size="default" color="danger" slot="end" (click)="onCancel()">
+      <ion-button size="default" fill="outline" color="danger" slot="end" (click)="onCancel()">
         Canelar
       </ion-button>
     </ion-item>

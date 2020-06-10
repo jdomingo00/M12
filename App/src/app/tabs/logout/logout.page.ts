@@ -17,7 +17,7 @@ export class LogoutPage implements OnInit {
     localStorage.removeItem('escuelavlc-userName');
     localStorage.removeItem('escuelavlc-passwd');
     localStorage.removeItem('escuelavlc-tipo');
-    this.router.navigate(['/login']);
+    location.reload();
   }
 
   onCancel() {

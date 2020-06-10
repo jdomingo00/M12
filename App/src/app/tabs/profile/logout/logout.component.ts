@@ -18,7 +18,8 @@ export class LogoutComponent implements OnInit {
     localStorage.removeItem('escuelavlc-passwd');
     localStorage.removeItem('escuelavlc-tipo');
     this.cancelar.emit();
-    this.router.navigate(['/login']);
+    location.reload();
+    // this.router.navigate(['/login']);
   }
 
   onCancel() {

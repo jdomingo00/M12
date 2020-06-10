@@ -124,6 +124,8 @@ INSERT INTO horarios VALUES (1, '47902065A', false);
 INSERT INTO horarios VALUES (2, '47902065A', false);
 INSERT INTO horarios VALUES (2, '47902065E', false);
 INSERT INTO horarios VALUES (9, '47902065E', false);
+INSERT INTO horarios VALUES (9, '47902065A', false);
+INSERT INTO horarios VALUES (9, '47902065F', false);
 INSERT INTO horarios VALUES (2, '47902065F', false);
 
 

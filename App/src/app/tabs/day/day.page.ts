@@ -10,6 +10,7 @@ import { DayService } from './day.service';
 export class DayPage implements OnInit {
 
   clase;
+  disable = false;
   tipo = localStorage.getItem('escuelavlc-tipo');
   constructor(private router: Router, private dayService: DayService) { }
 
@@ -22,4 +23,8 @@ export class DayPage implements OnInit {
     });
   }
 
+  asistir(variable) {
+    this.dayService.editAsistencia(variable).subscribe();
+    this.disable = true;
+  }
 }

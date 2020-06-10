@@ -24,4 +24,12 @@ export class DayService {
     }
   }
 
+  editAsistencia(variable) {
+    const options = {
+      observe: 'response' as 'body',
+    };
+
+    return this.http.post<HttpResponse<any>>(this.URL + '/editAlumnoAsistencia/' + this.userName, {variable}, options);
+  }
+
 }

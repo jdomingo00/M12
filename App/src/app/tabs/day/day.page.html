@@ -23,10 +23,12 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="tipo=='2'">
     <ion-item lines="none">
-      <ion-button fill="outline" slot="start">Asistire</ion-button>
-      <ion-button fill="outline" slot="end">No asistire</ion-button>
+      <ion-button [disabled]="disable" fill="outline" color="success" slot="start" (click)="asistir(true)">Asistire
+      </ion-button>
+      <ion-button [disabled]="disable" fill="outline" color="danger" slot="end" (click)="asistir(false)">No asistire
+      </ion-button>
     </ion-item>
   </ion-card>
 </ion-content>

@@ -5,5 +5,49 @@
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <form [formGroup]="insertForm">
+      <ion-card>
+        <ion-item>
+          <ion-label position="stacked">DNI <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="text" formControlName="username"></ion-input>
+        </ion-item>
 
+        <ion-item>
+          <ion-label position="stacked">Contraseña <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="password" formControlName="passwd"></ion-input>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-label position="stacked">Nombre <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="text" formControlName="nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Apellidos <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="text" formControlName="apellidos"></ion-input>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-label position="stacked">Telefono <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="text" formControlName="telefono"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Correo <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="email" formControlName="email"></ion-input>
+        </ion-item>
+      </ion-card>
+      <ion-button type="submit" fill="outline" color="success" expand="block" (click)="insert()">Añadir</ion-button>
+    </form>
+  </ion-card>
 </ion-content>

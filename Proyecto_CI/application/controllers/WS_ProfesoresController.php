@@ -70,6 +70,44 @@
 			$this->response($message, $httpcode);
 		}
 
+		protected function insertProfesor_post() {
+			$datos = $this->post('datos');
+
+			$result = $this->profesor->insertProfesor($datos);
+
+			if($result) {
+				$httpcode = RestController::HTTP_OK;
+				$message = array(
+					'msg' => 'Insertado con exito'
+				);
+			} else {
+				$httpcode = RestController::HTTP_INTERNAL_ERROR;
+				$message = array(
+					'msg' => 'Error'
+				);
+			}
+
+			$this->setHeaders();
+			$this->response($message, $httpcode);
+		}
+
+		protected function getListAlumnosProf_get($profesor) {
+			$result = $this->profesor->getListAlumnosProf($profesor);
+			
+			if (count($result) == 0) {
+				$httpcode = RestController::HTTP_NOT_FOUND;
+				$message = array(
+					'msg' => 'Alumnos no encontrados'
+				);
+			} else {
+				$message = $result;
+				$httpcode = RestController::HTTP_OK;
+			}
+			
+			$this->setHeaders();
+			$this->response($message, $httpcode);
+		}
+
 		public function getProfesores_options() {
 			$this->setOptions();
 		}
@@ -78,11 +116,19 @@
 			$this->setOptions();
 		}
 
+		public function getListAlumnosProf_options() {
+			$this->setOptions();
+		}
+
 		public function editProfesor_options() {
 			$this->setOptions();
 		}
+
+		public function insertProfesor_options() {
+			$this->setOptions();
+		}
 		
-		protected function setHeaders($token = null) {
+		protected function setHeaders() {
 			$this->output->set_header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-type, Accept");
             $this->output->set_header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 			$this->output->set_header("Access-Control-Allow-Origin: *");

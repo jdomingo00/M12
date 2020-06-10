@@ -15,14 +15,15 @@ export class HorariosContainer implements OnInit {
 
     console.log(this.map);
     // Carregar les coordenades
-    this.map.nativeElement = LEAFLET.map(this.map.nativeElement).setView([41.6167412, 0.62218], 5);
+    this.map.nativeElement = LEAFLET.map(this.map.nativeElement).setView([39.452686, -0.362120], 12);
     // Carregar les imatges del mapa
     LEAFLET.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 5
+      maxZoom: 20
     }).addTo(this.map.nativeElement);
 
-    LEAFLET.marker([41.6167412, 0.62218]).addTo(this.map.nativeElement).bindPopup('Lleida');
+    LEAFLET.marker([39.460540, -0.331553]).addTo(this.map.nativeElement).bindPopup('Puerto de Valencia');
+    LEAFLET.marker([39.429922, -0.408786]).addTo(this.map.nativeElement).bindPopup('Pista patinaje Paiporta');
   }
 
 }

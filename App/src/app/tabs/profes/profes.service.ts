@@ -4,18 +4,17 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ListService {
+export class ProfesService {
 
   readonly URL = 'http://localhost:1080/Proyecto_CI/index.php';
-  userName = localStorage.getItem('escuelavlc-userName');
 
   constructor(public http: HttpClient) { }
 
-  getAlumnos() {
+  insertProf(datos) {
     const options = {
       observe: 'response' as 'body',
     };
 
-      return this.http.get<HttpResponse<any>>(this.URL + '/getListAlumnosProf/' + this.userName, options);
+    return this.http.post<HttpResponse<any>>(this.URL + '/insertProfesor/', {datos}, options);
   }
 }

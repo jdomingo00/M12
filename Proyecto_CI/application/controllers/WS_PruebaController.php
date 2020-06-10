@@ -24,7 +24,7 @@
             $this->response($retmsg, RestController::HTTP_OK);
 		}
 		
-		protected function setHeaders($token = null) {
+		protected function setHeaders() {
             $this->output->set_header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-type, Accept");
             $this->output->set_header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 			$this->output->set_header("Access-Control-Allow-Origin: *");

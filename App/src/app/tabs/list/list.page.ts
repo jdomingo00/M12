@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ListService } from './list.service';
 
 @Component({
   selector: 'app-list',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class ListPage implements OnInit {
 
   tipo = localStorage.getItem('escuelavlc-tipo');
-  constructor(private router: Router) { }
+  alumnos = [];
+  constructor(private router: Router, private listService: ListService) { }
 
   ngOnInit() {
     if(this.tipo=='0') {
@@ -18,6 +20,10 @@ export class ListPage implements OnInit {
     else if(this.tipo=='2') {
       this.router.navigate(['/tabs/day']);
     }
+
+    this.listService.getAlumnos().subscribe( elem => {
+      this.alumnos = elem.body;
+    });
   }
 
 }
