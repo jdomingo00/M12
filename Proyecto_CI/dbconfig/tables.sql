@@ -72,25 +72,37 @@ CREATE ROLE dbuser WITH LOGIN PASSWORD '1234';
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO dbuser;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO dbuser;
 
+-- les contrasenyes son 1234
+
 INSERT INTO admins VALUES ('admin', '81dc9bdb52d04dc20036dbd8313ed055', 0, true);
 
 INSERT INTO profesores VALUES ('47902065B', '81dc9bdb52d04dc20036dbd8313ed055', 1, true, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
-INSERT INTO profesores VALUES ('47902065C', '81dc9bdb52d04dc20036dbd8313ed055', 1, true, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
-INSERT INTO profesores VALUES ('47902065D', '81dc9bdb52d04dc20036dbd8313ed055', 1, true, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO profesores VALUES ('47902065C', '81dc9bdb52d04dc20036dbd8313ed055', 1, true, 'Hector', 'Pulido Tarragona', 'hector@gmail.com', '660603635');
+INSERT INTO profesores VALUES ('47902065D', '81dc9bdb52d04dc20036dbd8313ed055', 1, true, 'Daniel', 'Rodroguez Iglesias', 'daniel@gmail.com', '670602635');
 
-INSERT INTO alumnos VALUES ('47902065A', '81dc9bdb52d04dc20036dbd8313ed055', 2, false, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
-INSERT INTO alumnos VALUES ('47902065E', '81dc9bdb52d04dc20036dbd8313ed055', 2, true, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
-INSERT INTO alumnos VALUES ('47902065F', '81dc9bdb52d04dc20036dbd8313ed055', 2, false, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO alumnos VALUES ('47902065A', '81dc9bdb52d04dc20036dbd8313ed055', 2, true, 'Julia', 'Domingo Garcia', 'garciadomingojulia@gmail.com', '660602635');
+INSERT INTO alumnos VALUES ('47902065E', '81dc9bdb52d04dc20036dbd8313ed055', 2, false, 'Guillem', 'Mora Bea', 'guillem@gmail.com', '668802635');
+INSERT INTO alumnos VALUES ('47902065F', '81dc9bdb52d04dc20036dbd8313ed055', 2, false, 'Ivan', 'Pelegri Saureu', 'ivan@gmail.com', '720602635');
 
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-02', 'Puerto', 'Adulto - Iniciacion', '47902065B', 'red');
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Adulto - Iniciacion', '47902065B', 'red');
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Infantil - Iniciacion', '47902065C', 'purple');
-INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Infantil - Medio', '47902065C', 'purple');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-13', 'Puerto', 'Adulto - Iniciacion', '47902065B', 'red');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-12', 'Puerto', 'Infantil - Iniciacion', '47902065B', 'purple');
+INSERT INTO clases VALUES (DEFAULT, '10:00:00', '2020-06-12', 'Puerto', 'Adulto - Iniciacion', '47902065B', 'red');
+INSERT INTO clases VALUES (DEFAULT, '15:00:00', '2020-06-11', 'Puerto', 'Infantil - Iniciacion', '47902065B', 'purple');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-11', 'Puerto', 'Infantil - Medio', '47902065B', 'purple');
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Adulto - Medio', '47902065D', 'orange');
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Particular', '47902065D', 'green');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-11', 'Puerto', 'Particular', '47902065D', 'green');
+INSERT INTO clases VALUES (DEFAULT, '17:00:00', '2020-06-11', 'Puerto', 'Particular', '47902065C', 'green');
+INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-12', 'Puerto', 'Particular', '47902065C', 'green');
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-03', 'Puerto', 'Intensivo', '47902065C', 'blue');
 INSERT INTO clases VALUES (DEFAULT, '19:00:00', '2020-06-11', 'Puerto', 'Intensivo', '47902065C', 'blue');
-INSERT INTO clases VALUES (DEFAULT, '00:01:00', '2020-06-10', 'Puerto', 'Intensivo', '47902065C', 'blue');
+INSERT INTO clases VALUES (DEFAULT, '10:00:00', '2020-06-12', 'Puerto', 'Intensivo', '47902065D', 'blue');
+INSERT INTO clases VALUES (DEFAULT, '07:00:00', '2020-06-12', 'Puerto', 'Intensivo', '47902065C', 'blue');
+INSERT INTO clases VALUES (DEFAULT, '20:00:00', '2020-06-11', 'Puerto', 'Intensivo', '47902065C', 'blue');
+INSERT INTO clases VALUES (DEFAULT, '17:00:00', '2020-06-11', 'Puerto', 'Intensivo', '47902065C', 'blue');
 
 INSERT INTO tipoClases VALUES ('Intensivo', 'Desde hace 10 años impartimos cursos intensivos para aprender a patinar de una forma SEGURA, FÁCIL y DIVERTIDA. Para adultos y para niños, da igual que edad tengas si estás comprendido entre 4 y 90 años. 
 
@@ -121,11 +133,32 @@ Te garantizamos una mejora notable de tu nivel de patinaje. Sólo en una hora po
 Nuestros alumnos están cubiertos por un seguro médico que cubrirá tus gastos médicos derivados de cualquier lesión que se pudiera producir.');
 
 INSERT INTO horarios VALUES (1, '47902065A', false);
-INSERT INTO horarios VALUES (2, '47902065A', false);
-INSERT INTO horarios VALUES (2, '47902065E', false);
-INSERT INTO horarios VALUES (9, '47902065E', false);
-INSERT INTO horarios VALUES (9, '47902065A', false);
-INSERT INTO horarios VALUES (9, '47902065F', false);
 INSERT INTO horarios VALUES (2, '47902065F', false);
-
-
+INSERT INTO horarios VALUES (3, '47902065E', false);
+INSERT INTO horarios VALUES (4, '47902065A', false);
+INSERT INTO horarios VALUES (5, '47902065F', false);
+INSERT INTO horarios VALUES (6, '47902065E', false);
+INSERT INTO horarios VALUES (7, '47902065A', false);
+INSERT INTO horarios VALUES (8, '47902065F', false);
+INSERT INTO horarios VALUES (9, '47902065E', false);
+INSERT INTO horarios VALUES (10, '47902065A', false);
+INSERT INTO horarios VALUES (11, '47902065F', false);
+INSERT INTO horarios VALUES (12, '47902065E', false);
+INSERT INTO horarios VALUES (13, '47902065A', false);
+INSERT INTO horarios VALUES (14, '47902065F', false);
+INSERT INTO horarios VALUES (15, '47902065E', false);
+INSERT INTO horarios VALUES (16, '47902065A', false);
+INSERT INTO horarios VALUES (17, '47902065F', false);
+INSERT INTO horarios VALUES (18, '47902065E', false);
+INSERT INTO horarios VALUES (19, '47902065A', false);
+INSERT INTO horarios VALUES (10, '47902065F', false);
+INSERT INTO horarios VALUES (11, '47902065E', false);
+INSERT INTO horarios VALUES (12, '47902065A', false);
+INSERT INTO horarios VALUES (13, '47902065F', false);
+INSERT INTO horarios VALUES (14, '47902065E', false);
+INSERT INTO horarios VALUES (15, '47902065A', false);
+INSERT INTO horarios VALUES (16, '47902065F', false);
+INSERT INTO horarios VALUES (17, '47902065E', false);
+INSERT INTO horarios VALUES (18, '47902065A', false);
+INSERT INTO horarios VALUES (19, '47902065F', false);
+INSERT INTO horarios VALUES (19, '47902065E', false);
