@@ -18,7 +18,7 @@
 			if (count($clases) == 0) {
 				$httpcode = RestController::HTTP_NOT_FOUND;
 				$message = array(
-					'msg' => 'Clases no trobades'
+					'msg' => 'Clases no encontradas'
 				);
 			} else {
 				$message = [];
@@ -32,13 +32,30 @@
 			$this->response($message, $httpcode);
 		}
 
-		protected function getNextClase_get($profesor) {
-			$clases = $this->clase->getNextClase($profesor);
+		protected function getNextClaseProf_get($profesor) {
+			$clases = $this->clase->getNextClaseProf($profesor);
 			
 			if ($clases == null) {
 				$httpcode = RestController::HTTP_NOT_FOUND;
 				$message = array(
-					'msg' => 'Clase no trobades'
+					'msg' => 'Clase no encontrada'
+				);
+			} else {
+				$message = $clases;
+				$httpcode = RestController::HTTP_OK;
+			}
+			
+			$this->setHeaders();
+			$this->response($message, $httpcode);
+		}
+
+		protected function getNextClaseAlumn_get($alumno) {
+			$clases = $this->clase->getNextClaseAlumn($alumno);
+			
+			if ($clases == null) {
+				$httpcode = RestController::HTTP_NOT_FOUND;
+				$message = array(
+					'msg' => 'Clase no encontrada'
 				);
 			} else {
 				$message = $clases;
@@ -93,7 +110,11 @@
 			$this->setOptions();
 		}
 
-		public function getNextClase_options() {
+		public function getNextClaseProf_options() {
+			$this->setOptions();
+		}
+
+		public function getNextClaseAlumn_options() {
 			$this->setOptions();
 		}
 

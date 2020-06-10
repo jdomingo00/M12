@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DayService } from './day.service';
 
 @Component({
   selector: 'app-day',
@@ -8,14 +9,17 @@ import { Router } from '@angular/router';
 })
 export class DayPage implements OnInit {
 
-  classe = { data: 'Dilluns 2 de Maig', desc: 'Classe iniciació - Adults. Port de Valencia - 19:00 a 20:30'}
+  clase;
   tipo = localStorage.getItem('escuelavlc-tipo');
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dayService: DayService) { }
 
   ngOnInit() {
     if(this.tipo=='0') {
       this.router.navigate(['/tabs/alumnos']);
     }
+    this.dayService.getData().subscribe( elem => {
+      this.clase = elem.body;
+    });
   }
 
 }

@@ -4,16 +4,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="clase">
   <ion-card>
-    <ion-item lines="full">
+    <ion-item lines="none">
       <ion-icon name="pin" slot="start"></ion-icon>
-      <ion-label> {{ classe.data }}</ion-label>
+      <ion-label>Clase en {{ clase.lugar }}</ion-label>
     </ion-item>
-  
+  </ion-card>
+
+  <ion-card>
     <ion-card-content>
-      {{ classe.desc }}
+      <ion-item lines="none">
+        Clase de: {{ clase.nivel }}
+      </ion-item>
+      <ion-item lines="none">
+        Hora de la clase: {{ clase.hora }}
+      </ion-item>
     </ion-card-content>
+  </ion-card>
+
+  <ion-card>
     <ion-item lines="none">
       <ion-button fill="outline" slot="start">Asistire</ion-button>
       <ion-button fill="outline" slot="end">No asistire</ion-button>

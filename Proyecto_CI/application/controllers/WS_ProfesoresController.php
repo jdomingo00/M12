@@ -49,11 +49,36 @@
 			$this->response($message, $httpcode);
 		}
 
+		protected function editProfesor_post($profesor) {
+			$datos = $this->post('datos');
+
+			$result = $this->profesor->editProfesor($datos, $profesor);
+
+			if($result) {
+				$httpcode = RestController::HTTP_OK;
+				$message = array(
+					'msg' => 'Editado con exito'
+				);
+			} else {
+				$httpcode = RestController::HTTP_INTERNAL_ERROR;
+				$message = array(
+					'msg' => 'Error'
+				);
+			}
+
+			$this->setHeaders();
+			$this->response($message, $httpcode);
+		}
+
 		public function getProfesores_options() {
 			$this->setOptions();
 		}
 
 		public function getProfesor_options() {
+			$this->setOptions();
+		}
+
+		public function editProfesor_options() {
 			$this->setOptions();
 		}
 		

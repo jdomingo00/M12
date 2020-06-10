@@ -33,12 +33,18 @@ const routes: Routes = [
         loadChildren: () => import('./profes/profes.module').then( m => m.ProfesPageModule)
       },
       {
+        path: 'logout',
+        loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/day',
         pathMatch: 'full'
       }
     ]
-  }
+  },
+  
+
 ];
 
 @NgModule({

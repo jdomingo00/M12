@@ -5,19 +5,21 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <form [formGroup]="loginForm">
-      <ion-item>
-        <ion-label position="stacked">User</ion-label>
-        <ion-input required type="text" formControlName="userName"></ion-input>
-      </ion-item>
+  <form [formGroup]="loginForm">
+    <ion-card>
+      <ion-card>
 
-      <ion-item>
-        <ion-label position="stacked">Contraseña</ion-label>
-        <ion-input required type="password" formControlName="passwd"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label position="stacked">User</ion-label>
+          <ion-input required type="text" formControlName="userName"></ion-input>
+        </ion-item>
 
-      <ion-button type="submit" (click)="onSubmit()">Login</ion-button>
-    </form>
-  </ion-card>
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input required type="password" formControlName="passwd"></ion-input>
+        </ion-item>
+      </ion-card>
+      <ion-button type="submit" expand="block" (click)="onSubmit()">Login</ion-button>
+    </ion-card>
+  </form>
 </ion-content>

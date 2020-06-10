@@ -60,8 +60,15 @@
 			return $clases;
 		}
 
-		public function getNextClase($profesor) {
+		public function getNextClaseProf($profesor) {
 			$query = $this->db->query("SELECT * from clases where dia>=CURRENT_DATE and hora<(CURRENT_TIME(0) + '01:00:00'::interval) and profesor = '" . $profesor . "' order by hora,dia asc limit 1;");
+			
+			if ($query->num_rows() != 1) return null;
+			else return $query->result_array()[0];
+		}
+
+		public function getNextClaseAlumn($alumno) {
+			$query = $this->db->query("SELECT clases.* from clases INNER JOIN horarios on clases.ID=horarios.clase where horarios.alumno='" . $alumno . "' and clases.dia>=CURRENT_DATE and clases.hora<(CURRENT_TIME(0) + '01:00:00'::interval) order by hora,dia asc limit 1;");
 			
 			if ($query->num_rows() != 1) return null;
 			else return $query->result_array()[0];

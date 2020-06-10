@@ -71,6 +71,12 @@
 			return $profesores;
 		}
 
+		public function editProfesor($datos, $profesor) {
+			$query = $this->db->query("UPDATE profesores set nombre ='" . $datos['nombre'] . "', apellidos ='" . $datos['apellidos'] . "', telefono ='" . $datos['telefono'] . "', email ='" . $datos['email'] . "' WHERE username = '" . $profesor . "';");
+		
+			return $query;
+		}
+
 		private function createProfesorFromRawObject($data) {
 			$profesor = new Profesor();
 	

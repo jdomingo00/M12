@@ -29,12 +29,12 @@
         <ion-input required type="email" formControlName="email"></ion-input>
       </ion-item>
     </ion-card>
-
-
-    <div class="ion-padding">
-      <ion-button expand="block" type="submit" class="ion-no-margin" (click)="onGuardar()">Guardar</ion-button>
-      <ion-button expand="block" type="submit" color="danger" class="ion-no-margin" (click)="onCancel()">Canelar
+    <ion-item lines="none">
+      <ion-button type="submit" size="default" slot="start" (click)="onGuardar()">Guardar
       </ion-button>
-    </div>
+      <ion-button type="submit" size="default" color="danger" slot="end" (click)="onCancel()">
+        Canelar
+      </ion-button>
+    </ion-item>
   </form>
 </ion-card>

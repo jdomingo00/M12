@@ -1,10 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Perfil</ion-title>
+    <!-- icono logout i redirect pag logout -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
   <app-profile-view *ngIf="!edit" [datos]='datos' (edit)="goEdit()"></app-profile-view>
   <app-profile-edit *ngIf="edit" [datos]='datos' (cancelar)="goEdit()" (edit)="editDatos($event)"></app-profile-edit>
+  <!-- pag logout -->
 </ion-content>

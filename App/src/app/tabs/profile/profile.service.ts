@@ -25,7 +25,6 @@ export class ProfileService {
   }
 
   editData(datos) {
-    console.log('tamos bien');
     const options = {
       observe: 'response' as 'body',
     };
