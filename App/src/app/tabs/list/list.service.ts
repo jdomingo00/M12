@@ -17,6 +17,5 @@ export class ListService {
     };
 
       return this.http.get<HttpResponse<any>>(this.URL + '/getAlumnos/' + this.userName, options);
-    }
   }
 }

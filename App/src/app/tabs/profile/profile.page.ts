@@ -11,6 +11,7 @@ export class ProfilePage implements OnInit {
 
   tipo = localStorage.getItem('escuelavlc-tipo');
   edit = false;
+  logout = false;
   datos = '';
   constructor(private router: Router, private profileService: ProfileService) { }
 
@@ -18,6 +19,7 @@ export class ProfilePage implements OnInit {
     if(this.tipo=='0') {
       this.router.navigate(['/tabs/alumnos']);
     }
+    this.logout = false;
     this.getDatos();
   }
 
@@ -29,6 +31,14 @@ export class ProfilePage implements OnInit {
 
   goEdit() {
     this.edit=!this.edit;
+  }
+
+  onLogout() {
+    this.logout = true;
+  }
+
+  noLogout() {
+    this.logout = false;
   }
 
   editDatos(event) {

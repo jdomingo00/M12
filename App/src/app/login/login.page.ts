@@ -31,14 +31,11 @@ export class LoginPage implements OnInit {
           localStorage.setItem('escuelavlc-userName', this.loginForm.value.userName);
           localStorage.setItem('escuelavlc-passwd', pswdCifrada.toString());
           localStorage.setItem('escuelavlc-tipo', elem.body);
-          console.log(elem.body);
           switch(elem.body) {
             case '0':
-              console.log('alumnos');
               this.router.navigate(['/tabs/alumnos']);
               break;
             default:
-              console.log('day');
               this.router.navigate(['/tabs/day']);
               break;
           }

@@ -1,12 +1,15 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Perfil</ion-title>
-    <!-- icono logout i redirect pag logout -->
+    <ion-button slot="end" fill="outline" (click)="onLogout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
-  <app-profile-view *ngIf="!edit" [datos]='datos' (edit)="goEdit()"></app-profile-view>
-  <app-profile-edit *ngIf="edit" [datos]='datos' (cancelar)="goEdit()" (edit)="editDatos($event)"></app-profile-edit>
-  <!-- pag logout -->
+  <app-profile-view *ngIf="!edit && !logout" [datos]='datos' (edit)="goEdit()"></app-profile-view>
+  <app-profile-edit *ngIf="edit && !logout" [datos]='datos' (cancelar)="goEdit()" (edit)="editDatos($event)">
+  </app-profile-edit>
+  <app-logout *ngIf="logout" (cancelar)="noLogout()"></app-logout>
 </ion-content>

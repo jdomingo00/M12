@@ -10,7 +10,6 @@ export class TabsPage implements OnInit {
   tipo = localStorage.getItem('escuelavlc-tipo');
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

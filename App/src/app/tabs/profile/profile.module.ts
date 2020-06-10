@@ -9,6 +9,7 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 import { ProfilePage } from './profile.page';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
     ProfilePageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [ProfilePage, ProfileViewComponent, ProfileEditComponent]
+  declarations: [ProfilePage, ProfileViewComponent, ProfileEditComponent, LogoutComponent]
 })
 export class ProfilePageModule {}
