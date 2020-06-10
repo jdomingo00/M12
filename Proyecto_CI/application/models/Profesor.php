@@ -45,12 +45,11 @@
 			$this->email = '';
 			$this->telefono = '';
 	
-			// Càrrega i obertura de la BD
-			$this->load->database('escueladb');    // -> $this->db
+			$this->load->database('escueladb'); 
 		}
 
 		public function getProfesores() {
-			$query = $this->db->get('profesores');    // SELECT * FROM profesores;
+			$query = $this->db->get('profesores');  
 			$profesores = [];
 			foreach ($query->result() as $data) {
 				$profesor = $this->createProfesorFromRawObject($data);

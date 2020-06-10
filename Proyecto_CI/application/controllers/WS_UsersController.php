@@ -28,7 +28,7 @@
 				}
 			}
 			
-			// parent::setHeaders();
+			$this->setHeaders();
 			$this->response($message, $httpcode);
 		}
 

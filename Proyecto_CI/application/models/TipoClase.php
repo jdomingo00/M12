@@ -15,13 +15,11 @@
 			$this->nivel = '';
 			$this->descripcion = '';
 	
-			// Càrrega i obertura de la BD
-			$this->load->database('escueladb');    // -> $this->db
+			$this->load->database('escueladb');
 		}
 
 		public function getTipoClases() {
-			// $query = $this->db->query("SELECT * FROM usuarios"); = pg_query();
-			$query = $this->db->get('tipoclases');    // SELECT * FROM tipoClases;
+			$query = $this->db->get('tipoclases');
 			$tipoClases = [];
 			foreach ($query->result() as $data) {
 				$tipoClase = $this->createTipoClaseFromRawObject($data);

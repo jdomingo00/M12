@@ -21,13 +21,11 @@
 			$this->passwd = '';
 			$this->tipo = '';
 	
-			// Càrrega i obertura de la BD
-			$this->load->database('escueladb');    // -> $this->db
+			$this->load->database('escueladb');
 		}
 
 		public function getUsers() {
-			// $query = $this->db->query("SELECT * FROM usuarios"); = pg_query();
-			$query = $this->db->get('usuarios');    // SELECT * FROM usuarios;
+			$query = $this->db->get('usuarios');
 			$users = [];
 			foreach ($query->result() as $data) {
 				$user = $this->createuserFromRawObject($data);
@@ -47,18 +45,6 @@
 	
 			return $user;
 		}
-
-		// public function addNewuser($username, $name, $surname1, $surname2)	{
-		// 	$data = array(
-		// 		'username' => $username,
-		// 		'name' => $name,
-		// 		'surname1' => $surname1,
-		// 		'surname2' => $surname2
-		// 	);
-	
-		// 	$this->db->insert('user', $data);
-	
-		// }
 
 		public function toArray() {
 			return array(

@@ -51,12 +51,11 @@
 			$this->telefono = '';
 			$this->verificado = '';
 	
-			// Càrrega i obertura de la BD
-			$this->load->database('escueladb');    // -> $this->db
+			$this->load->database('escueladb');
 		}
 
 		public function getAlumnos() {
-			$query = $this->db->get('alumnos');    // SELECT * FROM alumnos;
+			$query = $this->db->get('alumnos');
 			$alumnos = [];
 			foreach ($query->result() as $data) {
 				$alumno = $this->createAlumnoFromRawObject($data);

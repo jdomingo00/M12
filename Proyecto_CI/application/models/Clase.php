@@ -45,8 +45,7 @@
 			$this->profesor = '';
 			$this->color = '';
 	
-			// Càrrega i obertura de la BD
-			$this->load->database('escueladb');    // -> $this->db
+			$this->load->database('escueladb');
 		}
 
 		public function getClases() {
